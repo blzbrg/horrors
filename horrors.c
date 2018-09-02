@@ -1,3 +1,4 @@
+#include <stdio.h>
 // This file is a little story, you read it top to bottom left to right. It is a
 // journey of horror and revulsion. Whenever a new Terror is added to our little
 // bestiery, I _will_ be using it when convenient later. The point is to
@@ -69,7 +70,6 @@ int main() {
     struct herp {char c;};
     struct herp foo;
     foo.c = 'c';
-    return 0;
   }
 
   // this brings us to enums, which look a bit like structs in their declarations
@@ -91,5 +91,27 @@ int main() {
   // on the other hand, this is not ok:
   //  typedef enum H H;
   // because value `H` conflicts with the typedef'd type H
+
+  // Coming now to switches, there are some unexpected errors you may come across when using them
+  //  switch(0) {
+  //  case 0:
+  //    int i = 4;
+  //    print("hello\n");
+  //  }
+  // This snippet does not compile
+  // But the following does
+  switch(0) {
+    case 0:
+      printf("hello\n");
+      int i = 4;
+  }
+  // Cases are actually just fancy labels, so you can't have them point to a declaration.
+  // But just like before, we can just make it a statement by putting it all in its own block.
+  switch(0) {
+    case 0:{
+      int i = 4;
+      printf("world\n");
+    }
+  }
 
 }
