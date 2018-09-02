@@ -54,6 +54,12 @@ int main() {
   struct slurp {struct slurp * slurp;} slurp;
   slurp.slurp = &slurp;
 
+  // If you weren't confused enough, then let's use an additional namespace.
+  // Labels have their own namespace too
+ herp : {struct herp {struct herp * herp;} herp; }
+  // Note you need to have the curly braces around the declaration. This is because
+  // you cannot assign a label to a declaration, only a statement.
+  // But you can put curly braces around anything to put it into its own block, then it becomes a statement.
 
   {
     // of course, a struct type can shadow another
