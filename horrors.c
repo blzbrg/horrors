@@ -47,6 +47,9 @@ int main() {
   // You can hide a struct declaration inside a variable declaration
   struct herp {int a, b;} foo;
 
+  // In addition you can define a struct inline, then use it to set a value of a variable
+  int a = ((struct a {int a;}) {.a = 100}).a;
+
   // Structs can't contain their own type, but they can contain a pointer to
   // themselves. This isn't interesting on its own, after all it is how linked
   // lists are commonly implemented. However, combining this with other things,
